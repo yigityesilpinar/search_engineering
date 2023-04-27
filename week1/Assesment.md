@@ -78,7 +78,8 @@ Using **week1/bbuy_prmaoducts.json** and **all fields** and
 1275077 were indexed in 1.7471747069333408 minutes.  Total accumulated time spent in `bulk` indexing: 5.235540663849921 minutes
 ```
 
-Using **week1/bbuy_prmaoducts.json** and **all fields** and **refresh_interval** set to **60s** and **batch_size** set to **1600** 
+Using **week1/bbuy_prmaoducts.json** and **all fields** and **refresh_interval** set to **60s** and **batch_size** set
+to **1600**
 
 **workers** set to **8**
 
@@ -103,3 +104,40 @@ Using **week1/bbuy_prmaoducts.json** and **all fields** and **refresh_interval**
 ```text
 1275077 were indexed in 2.856647052083281 minutes.  Total accumulated time spent in `bulk` indexing: 139.22584377878107 minutes
 ```
+
+## Level 2
+
+**max_queries** set to **10000**
+
+```text
+Finished running 10000 queries in 1.8400158312499115 minutes
+```
+
+**without fuzzy name**
+
+```text
+ running 10000 queries in 1.5305817062500864 minutes
+```
+
+**without function scores**
+
+```text
+ running 10000 queries in 1.1903172652666398 minutes
+```
+
+
+**only multimatch**
+
+```text
+ running 10000 queries in 1.1535308860999067 minutes
+```
+
+**only multimatch name & short description**
+
+```text
+ running 10000 queries in 0.6096748020832213 minutes
+```
+
+
+
+

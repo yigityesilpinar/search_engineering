@@ -34,3 +34,8 @@ count:
 .PHONY: track
 track:
 	tail -f logs/index.log
+
+
+.PHONY: query
+query:
+	python week1/query.py --query_file ${QUERY_FILE} --max_queries ${MAX_QUERIES}

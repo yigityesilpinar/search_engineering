@@ -183,7 +183,7 @@ def search(client, user_query, index="bbuy_products"):
 
 
 @click.command()
-@click.option('--query_file', '-q', default="/workspace/datasets/train.csv", help='Path to train.csv or test.csv or similar file containing queries')
+@click.option('--query_file', '-q', default="datasets/train.csv", help='Path to train.csv or test.csv or similar file containing queries')
 @click.option('--index_name', '-i', default="bbuy_products", help="The name of the index to write to")
 @click.option('--host', '-o', default="localhost", help="The name of the host running OpenSearch")
 @click.option('--max_queries', '-m', default=500, help="The maximum number of queries to run.  Set to -1 to run all.")

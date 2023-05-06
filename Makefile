@@ -6,13 +6,37 @@ ifneq (,$(wildcard ./.env))
     export
 endif
 
+
+.PHONY: week1
+week1:
+	docker-compose -f docker/docker-compose-w2.yml up
+
+
+.PHONY: stop-week1
+stop-week1:
+	docker-compose -f docker/docker-compose-w1.yml down
+
+
+.PHONY: week1-query
+week1-query:
+	python week1/query.py --query_file ${QUERY_FILE} --max_queries ${MAX_QUERIES}
+
 .PHONY: start
 start:
-	docker-compose -f docker/docker-compose-w1.yml up
+	docker-compose -f docker/docker-compose-w2.yml up --detach
 
 .PHONY: stop
 stop:
-	docker-compose -f docker/docker-compose-w1.yml down
+	docker-compose -f docker/docker-compose-w2.yml stop
+
+.PHONY: build-week2-opensearch
+build-week2-opensearch:
+	docker build -f docker/Opensearch.Dockerfile -t week2-opensearch:latest .
+
+.PHONY: start-monitoring
+start-monitoring:
+	docker-compose -f docker-grafana/monitoring.yml up
+
 
  .PHONY: mapping
 mapping:
@@ -21,7 +45,7 @@ mapping:
 
 .PHONY: index
 index: delete mapping
-	python3 week1/index.py -s ${BBUY_DATA} --refresh_interval ${REFRESH_INTERVAL} --batch_size ${BATCH_SIZE} --workers ${WORKERS}
+	python3 week2/index.py -s ${BBUY_DATA} --refresh_interval ${REFRESH_INTERVAL} --batch_size ${BATCH_SIZE} --workers ${WORKERS}
 
 .PHONY: delete
 delete:
@@ -38,4 +62,4 @@ track:
 
 .PHONY: query
 query:
-	python week1/query.py --query_file ${QUERY_FILE} --max_queries ${MAX_QUERIES}
+	python week2/query.py --query_file ${QUERY_FILE} --max_queries ${MAX_QUERIES} --workers ${QUERY_WORKERS}

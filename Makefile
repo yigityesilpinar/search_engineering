@@ -21,13 +21,21 @@ stop-week1:
 week1-query:
 	python week1/query.py --query_file ${QUERY_FILE} --max_queries ${MAX_QUERIES}
 
+.PHONY: week2
+week2:
+	docker-compose -f docker/docker-compose-w2.yml up --detach
+
+.PHONY: stop-week2
+stop-week2:
+	docker-compose -f docker/docker-compose-w2.yml stop
+
 .PHONY: start
 start:
-	docker-compose -f docker/docker-compose-w2.yml up --detach
+	docker-compose -f docker/docker-compose-w3.yml up --detach
 
 .PHONY: stop
 stop:
-	docker-compose -f docker/docker-compose-w2.yml stop
+	docker-compose -f docker/docker-compose-w3.yml stop
 
 .PHONY: build-week2-opensearch
 build-week2-opensearch:
@@ -35,8 +43,11 @@ build-week2-opensearch:
 
 .PHONY: start-monitoring
 start-monitoring:
-	docker-compose -f docker-grafana/monitoring.yml up
+	docker-compose -f docker-grafana/monitoring.yml up --detach
 
+.PHONY: stop-monitoring
+stop-monitoring:
+	docker-compose -f docker-grafana/monitoring.yml stop
 
  .PHONY: mapping
 mapping:

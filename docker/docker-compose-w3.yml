@@ -9,7 +9,7 @@
 version: '3'
 services:
   opensearch-node1:
-    image: opensearchproject/opensearch:2.6.0
+    image: week2-opensearch:latest
     container_name: opensearch-node1
     ports:
       - 9200:9200
@@ -31,7 +31,7 @@ services:
     networks:
       - opensearch-net
   opensearch-node2:
-    image: opensearchproject/opensearch:2.6.0
+    image: week2-opensearch:latest
     container_name: opensearch-node2
     environment:
       - cluster.name=opensearch-cluster
@@ -50,7 +50,7 @@ services:
     networks:
       - opensearch-net
   opensearch-node3:
-    image: opensearchproject/opensearch:2.6.0
+    image: week2-opensearch:latest
     container_name: opensearch-node3
     environment:
       - cluster.name=opensearch-cluster

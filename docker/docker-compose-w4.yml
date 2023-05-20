@@ -1,7 +1,7 @@
 version: '3'
 services:
   opensearch-cl1-node1:
-    image: week2-opensearch:latest
+    image: week4-opensearch:latest
     container_name: opensearch-cl1-node1
     environment:
       - node.roles=master,data,transform
@@ -30,10 +30,10 @@ services:
     networks:
       - opensearch-net
   opensearch-cl1-node2:
-    image: week2-opensearch:latest
+    image: week4-opensearch:latest
     container_name: opensearch-cl1-node2
     environment:
-      - node.roles=data
+      - node.roles=master,data,transform
       - cluster.name=opensearch-cluster-1
       - node.name=opensearch-cl1-node2
       - discovery.seed_hosts=opensearch-cl1-node1,opensearch-cl1-node2,opensearch-cl1-node3
@@ -57,10 +57,10 @@ services:
     networks:
       - opensearch-net
   opensearch-cl1-node3:
-    image: week2-opensearch:latest
+    image: week4-opensearch:latest
     container_name: opensearch-cl1-node3
     environment:
-      - node.roles=data
+      - node.roles=master,data,transform
       - cluster.name=opensearch-cluster-1
       - node.name=opensearch-cl1-node3
       - discovery.seed_hosts=opensearch-cl1-node1,opensearch-cl1-node2,opensearch-cl1-node3

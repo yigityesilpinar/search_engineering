@@ -49,9 +49,9 @@ stop:
 down:
 	docker-compose -f docker/docker-compose-w4.yml down --remove-orphans
 
-.PHONY: build-week2-opensearch
-build-week2-opensearch:
-	docker build -f docker/Opensearch.Dockerfile -t week2-opensearch:latest .
+.PHONY: build-week4-opensearch
+build-week4-opensearch:
+	docker build -f docker/Opensearch.Dockerfile -t week4-opensearch:latest .
 
 .PHONY: start-monitoring
 start-monitoring:

@@ -5,7 +5,7 @@ usage()
   echo "Example: ./count-tracker.sh  -o opensearch-node1"
   exit 2
 }
-HOST="localhost"
+HOST="https://localhost:9200"
 
 while getopts ':o:h' c
 do
@@ -23,6 +23,6 @@ shift $((OPTIND -1))
 while [ true ];
 do
   echo "Products:"
-  curl -k -XGET -u admin:admin  "https://$HOST:9200/_cat/count/bbuy_products";
+  curl -k -XGET -u admin:admin  "$HOST/_cat/count/bbuy_products";
   sleep 5;
 done
